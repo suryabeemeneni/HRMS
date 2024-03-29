@@ -1,0 +1,30 @@
+/* styles.css */
+
+.container2001 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  }
+  label::first-letter {
+    color: red;
+  }
+  .form2001 {
+    width: 35%;
+    border: 1px solid #ccc;
+    box-shadow:1px 2px 2px 2px #efefef ;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  .btn2001{
+    color: #fff;
+    background-color: rgb(8,33,68);
+    border: none ;
+    border-radius: 8px;
+  }
+  .btn2001:hover{
+    background-color: rgb(11, 51, 108);
+  }
+ 

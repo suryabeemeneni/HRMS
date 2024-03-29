@@ -1,0 +1,61 @@
+.slick-slide img {
+  transition: all 0.5s ease;
+  transform: scale(0.92);
+}
+.slick-center img {
+  transform: scale(1.06);
+}
+
+.slick-list {
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .slick-slide {
+    padding: 0;
+  }
+}
+
+/* ------------------------------------------ Trending Cards ------------------------------------------------------ */
+
+.cards-row {
+    width: 90%;
+    margin: auto;
+    height: 305px;
+    display: flex;
+    gap: 13px;
+    overflow: scroll;
+    margin-bottom: 50px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    & img {
+        &:hover {
+            transform: scale(1.04);
+            cursor: pointer;
+        }
+    }
+}
+
+.Trending, .Rent  {
+    height: 100%;
+    & img {
+        cursor: pointer;
+        width: 170px;
+        height: 250px;
+        border-radius: 10px 10px 0 0;
+    }
+    & b {
+        width: 90%;
+        padding: 0 2.5%;  
+    }
+}
+
+.Recommended {
+    height: 50%;
+    & img {
+        cursor: pointer;
+        width: 370px;
+        height: 220px;
+    }
+}

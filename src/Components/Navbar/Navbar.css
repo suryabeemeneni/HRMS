@@ -1,0 +1,125 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 90%;
+  height: 60px;
+  /* box-shadow: 0px 0.5px 2px gray; */
+  margin-bottom: 5px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom,  rgb(227, 227, 227) 55% , transparent 85%);
+}
+.logo {
+  width: 90px;
+  height: 60%;
+  background: transparent;
+}
+.nav-search-input, .nav-search-input-M {
+  width: 40%;
+  & input {
+    border: none;
+    box-shadow: 0 0.1px 1px rgb(0, 0, 0);
+    width: 100%;
+    height: 31px;
+    outline: none;
+    border-radius: 10px;
+    padding-left: 35px;
+    &:hover {
+      border: 0.1px double rgb(9, 72, 74);
+    }
+  }
+  & .fas {
+    margin-top: 8px;
+    margin-left: 7px;
+    position: absolute;
+    color: rgb(155, 155, 155);
+  }
+}
+
+.nav-titles {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 7%;
+  & span {
+    cursor: pointer;
+    &:hover {
+      color: cadetblue;
+    }
+  }
+  & img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 1px;
+  }
+}
+
+.nav-search {
+  display: none;
+}
+
+.nav-footer {
+  display: none;
+}
+
+@media (max-width : 768px) {
+  .nav-search-input,
+  .nav-titles {
+    display: none;
+  }
+  .nav-search {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 60%;
+  }
+  .nav-search-input-M {
+    width: 80%;
+  }
+  .nav-footer {
+    width: 100%;
+    height: 47px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background: lightgray;
+    & .icons {
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        color: cadetblue;
+      }
+    }
+    & :nth-child(3) {
+      display: none;
+    }
+    & img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width : 480px) {
+  .nav-search {
+    width: unset;
+  }
+  .nav-search-input-M {
+    display: none;
+  }
+  .nav-footer {
+    & :nth-child(3) {
+      display: unset;
+    }
+  }
+}

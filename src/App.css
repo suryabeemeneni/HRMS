@@ -1,0 +1,11 @@
+/* * {
+  background-color: #282c34;
+  color: rgb(247, 247, 247);
+} */
+* {
+  background-color: whiteSmoke;
+}
+p, b, h3, .icons, span, div {
+  background: transparent;
+  color: #555757;
+}
