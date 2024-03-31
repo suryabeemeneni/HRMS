@@ -1,0 +1,232 @@
+.menubar {
+  height: 100%;
+  padding: 8px 12px 20px;
+  box-sizing: border-box;
+  border-radius: 0 30px 30px 0;
+  border-right-style: solid;
+  border-right-color: rgb(219, 219, 219);
+  border-right-width: 1px;
+  margin-right: 10px;
+  display: flex;
+}
+.menubar-content {
+  display: flex;
+  flex-direction: column;
+}
+.menubar-profile {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.menubar-profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 1px;
+  border: 2.5px solid green;
+}
+.menubar-profile-cont {
+  display: flex;
+  flex-direction: column;
+  & p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 70%;
+  }
+  & h5 {
+    cursor: pointer;
+  }
+}
+.menubar-checkIn {
+  margin-bottom: 7px;
+}
+
+.menubar-menu-div {
+  flex-grow: 1;
+}
+
+.menubar-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
+  color: var(--initial-color);
+  padding: 5px;
+  cursor: pointer;
+  & h5 {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: 500;
+  }
+}
+.menubar-icons-notification-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  margin-top: -8px;
+  margin-left: 8px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.menubar-company-heading {
+  margin-top: 7px;
+  color: var(--sub-heading-faded-color);
+}
+.menubar-company {
+  margin: 5px 0;
+  max-height: 180px;
+  overflow: scroll;
+}
+.menubar-company-content {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 3px;
+  & h5 {
+    color: var(--active-color);
+  }
+}
+.menubar-company-content-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.menubar-services {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menubar-services-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--sub-heading-faded-color);
+}
+.menubar-services-content-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 3px;
+}
+.menubar-setting {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* --------------------------- side bar close css ---------------------------------- */
+.menubar-half {
+  border-radius: 0px !important;
+    border: none;
+    margin-right: 0;
+    box-shadow: none !important;
+  & .menubar-profile-cont {
+    display: none;
+  }
+  & .menubar-menu,
+  .menubar-company-content,
+  .menubar-services-content {
+    justify-content: center;
+    & h5 {
+      display: none;
+    }
+  }
+  & .menubar-services-content {
+    align-items: center;
+  }
+  & .menubar-close-open {
+    margin-left: 115%;
+  }
+}
+
+/* --------------------- heading active ------------------------ */
+.content-active {
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border: none;
+  color: var(--color);
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  &:hover {
+    transition: 0.5s;
+    background: var(--button-hover-color);
+  }
+}
+
+/* --------------------------- sub side menubar ---------------------------------- */
+.sub-menubar-none {
+  display: none;
+}
+.sub-menubar {
+  width: 230px;
+  height: 100%;
+  padding: 10px 10px 0 10px;
+  border-left-style: dotted;
+  border-left-color: rgb(219, 219, 219);
+  border-left-width: 0.1px;
+  background: white;
+  position: absolute;
+  left: 95px;
+  top: 0;
+  border-radius: 0 30px 30px 0;
+  border-right-style: solid;
+  border-right-color: rgb(219, 219, 219);
+  border-right-width: 1px;
+  box-sizing: border-box;
+}
+
+
+.menubar-top-768,
+.menubar-bottom-768 {
+  display: none;
+}
+
+/* --------------------------- media query to hide side bar ---------------------------------- */
+@media (max-width: 768px) {
+  .menubar {
+    display: none;
+  }
+  .menubar-top-768,
+  .menubar-bottom-768 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+  }
+}
+.menubar-top-768 {
+  width: 95%;
+  padding: 0 2.5%;
+}
+.menubar-top-768-row {
+  display: flex;
+  gap: 15px;
+  flex-grow: 1;
+  justify-content: right;
+}
+.menubar-top-768-profile {
+  width: fit-content;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.menubar-bottom-768 {
+  border-top-style: solid;
+  border-top-color: rgb(219, 219, 219);
+  border-top-width: 1px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}

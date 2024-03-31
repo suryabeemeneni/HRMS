@@ -1,18 +1,17 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom"
 import './App.css';
-import Footer from "./Components/Footer/Footer";
-import Navbar from "./Components/Navbar/Navbar";
-import Parent from "./Components/Body/Parent";
+import {BrowserRouter,Routes,Route} from "react-router-dom"
+import LandingPage from './Components/LandingPage';
+
+export const loadingUrl = "https://cdn.dribbble.com/users/115601/screenshots/5356365/loading.gif";
 
 function App() {
   return (
     <>
     <BrowserRouter>
-    {/* <Navbar/> */}
     <Routes>
-        <Route path='/' exact element={<Parent/>}/>
+        <Route path='/' exact element={<LandingPage/>}/>
       </Routes>
-      {/* <Footer/> */}
+      {/* <Footer /> */}
     </BrowserRouter>
     </>
   );
