@@ -1,10 +1,18 @@
 import React from 'react';
-import { FaHouseUser, FaEnvelopeOpenText, FaDeskpro} from "react-icons/fa";
+import { FaHouseUser, FaDeskpro, FaBandcamp} from "react-icons/fa";
 import Services from "../images/SvgServices.png";
-import Settings from "../images/SvgSettings.png";
 import Projects from "../images/SvgProject.png";
 
-const BottomMenuBar = ({isActive, setIsActive}) => {
+const BottomMenuBar = ({isActive, setIsActive, setActiveTab, setShowSearchEmployee, setShowNotifications ,setShowMails}) => {
+
+  const handleMenuItem = (tabItem) => {
+    setIsActive(tabItem);
+    setActiveTab(null);
+    setShowSearchEmployee(null);
+    setShowNotifications(null);
+    setShowMails(null);
+  };
+  
     return (
         <>
             {/* ----------------------------- Menu Bar below 768px  (bottom) ------------------------------- */}
@@ -15,7 +23,7 @@ const BottomMenuBar = ({isActive, setIsActive}) => {
                 isActive === "Home" && "content-active"
               }`}
               title="Home"
-              onClick={() => setIsActive("Home")}
+              onClick={() => handleMenuItem("Home")}
             >
               <FaHouseUser className="menubar-icons" />
             </div>
@@ -24,18 +32,18 @@ const BottomMenuBar = ({isActive, setIsActive}) => {
                 isActive === "Daily-Reports" && "content-active"
               }`}
               title="Daily Reports"
-              onClick={() => setIsActive("Daily-Reports")}
+              onClick={() => handleMenuItem("Daily-Reports")}
             >
               <FaDeskpro className="menubar-icons" />
             </div>
             <div
               className={`menubar-menu content-hover ${
-                isActive === "Mail" && "content-active"
+                isActive === "News Feed" && "content-active"
               }`}
-              title="Mail"
-              onClick={() => setIsActive("Mail")}
+              title="News Feed"
+              onClick={() => handleMenuItem("News Feed")}
             >
-              <FaEnvelopeOpenText className="menubar-icons" />
+              <FaBandcamp className="menubar-icons" />
             </div>
           <button className="button">Checkin</button>
           <div
@@ -43,7 +51,7 @@ const BottomMenuBar = ({isActive, setIsActive}) => {
                   isActive === 'Projects' && "content-active"
                 }`}
                 title='Projects'
-                onClick={() => setIsActive('Projects')}
+                onClick={() => handleMenuItem('Projects')}
               >
                 <img
                   className="menubar-company-content-img"
@@ -52,12 +60,13 @@ const BottomMenuBar = ({isActive, setIsActive}) => {
                 />
               </div>
           <div
+          title='Services'
               className={`menubar-services-content content-hover ${
                 isActive === "Service" && "content-active"
               }`}
-              onClick={() => setIsActive("Service")}
+              onClick={() => handleMenuItem("Service")}
             >
-              <img src={Services} className="menubar-services-content-img" />
+              <img src={Services} className="menubar-services-content-img"  alt='Services'/>
             </div>
         </div>
         </>

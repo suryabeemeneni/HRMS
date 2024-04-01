@@ -51,7 +51,7 @@ const SearchEmployee = () => {
 
   const handleSelect = useCallback(
     (name) => {
-    //   navigate(`/empdash/${name}`);
+      navigate(`/empdash/${name}`);
       setSearchName("");
       setShowSuggestions(false);
     },
@@ -64,7 +64,7 @@ const SearchEmployee = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
-      e.preventDefault(); // Prevents moving cursor in input field
+      e.preventDefault();
       setSelectedSuggestionIndex((prevIndex) =>
         prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
       );
@@ -74,19 +74,10 @@ const SearchEmployee = () => {
         prevIndex > 0 ? prevIndex - 1 : prevIndex
       );
     } 
-    // else if (e.key === "Enter") {
-    //   e.preventDefault();
-    //   if (selectedSuggestionIndex === -1) {
-    //     handleSelect(suggestions[0]); // Select the first suggestion
-    //   } else {
-    //     handleSelect(suggestions[selectedSuggestionIndex].name);
-    //   }
-    // }
   };
 
   return (
-    <>
-      <div className="SearchEmployee">
+      <div>
         <span className="SearchEmployee-input-span">
           <FaSearch className="SearchEmployee-icon" />
           <input
@@ -118,7 +109,6 @@ const SearchEmployee = () => {
           </div>
         )}
       </div>
-    </>
   );
 };
 

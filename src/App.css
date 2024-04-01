@@ -74,3 +74,55 @@
     display: none;
 }
 }
+
+
+
+/* -------------------------- 768 popup containers ---------------------------------- */
+
+.popupContainer768 {
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  background: var(--glass-background-color);
+  height: 100%;
+}
+.popupContainer768-sub {
+  width: 85%;
+  margin: auto;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+.popupContainer768-container {
+  width: 100%;
+  background: white;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 97%;
+  overflow: scroll;
+}
+
+@media (max-width : 768px) {
+  .popupContainer768-container {
+      width: 90%;
+      padding: 4.5%;
+      border-radius: 13px;
+      max-height: 100%;
+  }
+  .popupContainer768 {
+      display: unset;
+  }
+}
+
+@media (max-width : 480px) {
+  .popupContainer768-container {
+      width: 95%;
+      padding: 2.5%;
+      border-radius: 0 0 13px 13px ;
+  }
+  .popupContainer768-sub {
+      width: 100%;
+  }
+}

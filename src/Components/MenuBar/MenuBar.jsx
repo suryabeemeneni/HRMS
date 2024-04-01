@@ -2,21 +2,10 @@ import React from "react";
 import "./MenuBar.css";
 import Hand from "../images/HelloHand.png";
 import Projects from "../images/SvgProject.png";
-import Contact from "../images/SvgContact.png";
-import About from "../images/SvgAbout.png";
-
-import Holidays from "../images/featuresImages/Holidays.webp";
-import TaskTracking from "../images/featuresImages/TaskTracking.webp";
-import Salary from "../images/featuresImages/salary.webp";
-import WorkReport from "../images/featuresImages/report.webp";
-import Gallery from "../images/featuresImages/Gallery.webp";
-import LoginDetails from "../images/featuresImages/LoginDetails.webp";
-
-import Services from "../images/SvgServices.png";
-import Settings from "../images/SvgSettings.png";
 import Logout from "../images/SvgLogout.png";
 
 import {
+  FaBandcamp,
   FaBell,
   FaDeskpro,
   FaEnvelopeOpenText,
@@ -24,6 +13,7 @@ import {
   FaHouseUser,
   FaSearch,
 } from "react-icons/fa";
+import { Features } from "./DummyData";
 
 const MenuBar = ({
   isActive,
@@ -33,8 +23,41 @@ const MenuBar = ({
   activeTab,
   setActiveTab,
 }) => {
+ 
+
+  const MainContent = [
+    {
+      icon: <FaHouseUser />,
+      title: "Home",
+    },
+    {
+      icon: <FaSearch />,
+      title: "Search",
+    },
+    {
+      icon: <FaFacebookMessenger />,
+      title: "Chat",
+    },
+    {
+      icon: <FaDeskpro />,
+      title: "Daily report",
+    },
+    {
+      icon: <FaBandcamp />,
+      title: "News Feed",
+    },
+    {
+      icon: <FaEnvelopeOpenText />,
+      title: "Mails",
+    },
+    {
+      icon: <FaBell />,
+      title: "Notifications",
+    },
+  ];
+
   const handleClick = (title) => {
-    if (title === "Search" || title === "Notifications" || title === "Mails") {
+    if (title === "Search" || title === "Notifications" || title === "Mails" || title === "Holidays") {
       handleTabItem(title);
     } else {
       handleMenuItem(title);
@@ -55,68 +78,6 @@ const MenuBar = ({
     setActiveTab(null);
     setSideBar(true);
   };
-
-  const MainContent = [
-    {
-      icon: <FaHouseUser />,
-      title: "Home",
-    },
-    {
-      icon: <FaSearch />,
-      title: "Search",
-    },
-    {
-      icon: <FaFacebookMessenger />,
-      title: "Chat",
-    },
-    {
-      icon: <FaDeskpro />,
-      title: "Daily report",
-    },
-    {
-      icon: <FaEnvelopeOpenText />,
-      title: "Mails",
-    },
-    {
-      icon: <FaBell />,
-      title: "Notifications",
-    },
-  ];
-
-  const Features = [
-    {
-      imgUrl: `${WorkReport}`,
-      title: "Your details - logs",
-    },
-    {
-      imgUrl: `${LoginDetails}`,
-      title: "checkIn Details",
-    },
-    {
-      imgUrl: `${TaskTracking}`,
-      title: "Task list",
-    },
-    {
-      imgUrl: `${Holidays}`,
-      title: "Leave",
-    },
-    {
-      imgUrl: `${Salary}`,
-      title: "Salaryslips",
-    },
-    {
-      imgUrl: `${Projects}`,
-      title: "Projects",
-    },
-    {
-      imgUrl: `${Holidays}`,
-      title: "Holidays",
-    },
-    {
-      imgUrl: `${Gallery}`,
-      title: "Gallery",
-    },
-  ];
   return (
     <>
       <div className="menubar-content">
@@ -126,6 +87,7 @@ const MenuBar = ({
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS90HxBHJqRkvtgM9Z7RyR3bLV2mlG01SzkgB51gGui1Hewzt6sjpD3FrceNug5R-8nGPA&usqp=CAU"
             alt="profile"
             title="profile"
+            style={{ border: "2.5px solid green" }}
           />
           <span className="menubar-profile-cont">
             <p>
@@ -145,11 +107,11 @@ const MenuBar = ({
           className={`menubar-menu-div ${
             activeTab === "Search" ||
             activeTab === "Notifications" ||
-            activeTab === "Mails"
+            activeTab === "Mails" ||
+            activeTab === "Holidays"
               ? setSideBar(true)
               : setSideBar(false)
-          }`}
-        >
+          }`}>
           {MainContent.map((data, index) => (
             <div
               key={index}
@@ -163,11 +125,13 @@ const MenuBar = ({
                   ? "content-active"
                   : ""
               }`}
-              title={data.title}  
+              title={data.title}
               onClick={() => handleClick(data.title)}
             >
               {data.icon}
-              {data.title === "Chat" || data.title === "Notifications" || data.title === "Mails" ? (
+              {data.title === "Chat" ||
+              data.title === "Notifications" ||
+              data.title === "Mails" ? (
                 <div className="menubar-icons-notification-dot"></div>
               ) : null}
               <h5 className="menubar-heading">{data.title}</h5>
@@ -180,15 +144,28 @@ const MenuBar = ({
         {/* ---------- Services ---------- */}
 
         <h6 className="menubar-company-heading">Services : </h6>
-        <div className="menubar-company container-background scroll-bar">
+        <div
+         className={`menubar-company container-background scroll-bar ${
+          activeTab === "Search" ||
+          activeTab === "Notifications" ||
+          activeTab === "Mails" ||
+          activeTab === "Holidays"
+            ? setSideBar(true)
+            : setSideBar(false)
+        }`}>
           {Features.map((data, index) => (
             <div
               key={index}
               className={`menubar-company-content content-hover ${
-                isActive === data.title && "content-active"
+                isActive === data.title ? "content-active" : ""
+              } ${
+                (data.title === "Holidays") &&
+                activeTab === data.title
+                  ? "content-active"
+                  : ""
               }`}
               title={data.title}
-              onClick={() => handleMenuItem(data.title)}
+              onClick={() => handleClick(data.title)}
             >
               <img
                 className="menubar-company-content-img"
@@ -200,10 +177,16 @@ const MenuBar = ({
           ))}
         </div>
 
-        {/* ---------- Logout ---------- */}
-        <div className="menubar-services-content content-hover">
-          <img src={Logout} className="menubar-services-content-img" />
-          <h5 className="menubar-heading">Logout</h5>
+        {/* ---------- projects & Logout ---------- */}
+        <div className="menubar-services">
+          <div className="menubar-services-content content-hover" onClick={() => setIsActive('Projects')}>
+        <img src={Projects} title="Projects" className="menubar-services-content-img" alt="Projects"/>
+        <h5 className="menubar-heading">Projects</h5>
+        </div>
+          <div className="menubar-services-content content-hover">
+            <img src={Logout} title="Logout" className="menubar-services-content-img" alt="Logout" />
+            <h5 className="menubar-heading">Logout</h5>
+          </div>
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import MenuBar from "./MenuBar/MenuBar";
 import Navbar768 from "./MenuBar/Navbar768";
 import BottomMenuBar from "./MenuBar/BottomMenuBar";
 import SearchEmployee from "./SearchEmployee/SearchEmployee";
+import Notifications from "./Notifications/Notifications";
 
 const LandingPage = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -11,6 +12,10 @@ const LandingPage = () => {
   const [isActive, setIsActive] = useState(storedTab ? storedTab : "Home");
   const [activeTab, setActiveTab] = useState('')
 
+  const [showSearchEmployee, setShowSearchEmployee] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showMails, setShowMails] = useState(false);
+
   useEffect(() => {
     sessionStorage.setItem("isactivetab", isActive);
   }, [isActive]);
@@ -18,7 +23,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <Navbar768 isActive={isActive} setIsActive={setIsActive} activeTab={activeTab} setActiveTab={setActiveTab}/>
+      <Navbar768 isActive={isActive} setIsActive={setIsActive} activeTab={activeTab} setActiveTab={setActiveTab} setShowSearchEmployee={setShowSearchEmployee} setShowNotifications={setShowNotifications} setShowMails={setShowMails} showSearchEmployee={showSearchEmployee} showNotifications={showNotifications} showMails={showMails}/>
 
       {/* -------------------- main menubar -------------------------------------- */}
 
@@ -27,10 +32,7 @@ const LandingPage = () => {
           <div
             className={`menubar box-shadow ${
               sideBar === true && "menubar-half"
-            }`}
-            // onMouseEnter={() => setSideBar(false)}
-            // onMouseLeave={() => setSideBar(true)}
-          >
+            }`}>
             <MenuBar
               isActive={isActive}
               setIsActive={setIsActive}
@@ -40,36 +42,38 @@ const LandingPage = () => {
               setActiveTab={setActiveTab}
             />
 
-            {activeTab === "Settings" ? (
-              <div className={`sub-menubar`}>Settings</div>
-            ) : null}
-            {activeTab === "Search" ? (
-              <div className={`sub-menubar`}><SearchEmployee/></div>
-            ) : null}
-            {activeTab === "Notifications" ? (
-              <div className={`sub-menubar`}>Notifications</div>
-            ) : null}
-            {activeTab === "Holidays" ? (
-              <div className={`sub-menubar`}>Holidays</div>
+            {((activeTab === "Settings") || (activeTab === "Search") || (activeTab === "Notifications") || (activeTab === "Holidays") || (activeTab === "Mails") )? (
+               <div className="sub-menubar-container" onClick={() => setActiveTab('')}>
+              <div className={`sub-menubar scroll-bar`} onClick={(e) => e.stopPropagation()}>
+                {activeTab === "Settings" ? ( 'Settings' ) : null}
+                {activeTab === "Search" ? (<SearchEmployee/>) : null}
+            {activeTab === "Notifications" ? (<Notifications/>) : null}
+            {activeTab === "Holidays" ? ("Holidays") : null}
+            {activeTab === "Mails" ? ("Mails") : null}
+                </div></div>
             ) : null}
           </div>
         </div>
         <div
           className="active-content scroll-bar"
-          style={{ flex: "1", overflow: "scroll" }}
+          style={{ flex: "1", overflowY: "scroll" }}
         >
           {isActive === "Service" ? "Service" : null}
           {isActive === "Home" ? "Home" : null}
           {isActive === "Chat" ? "Chat" : null}
-          {isActive === "Mails" ? "Mails" : null}
           {isActive === "Projects" ? "Projects" : null}
           {isActive === "Contact" ? "Contact" : null}
           {isActive === "About" ? "About" : null}
           {isActive === "Gallery" ? "Gallery" : null}
+          {isActive === "Your details - logs" ? "Your details - logs" : null}
+          {isActive === "checkIn Details" ? "checkIn Details" : null}
+          {isActive === "Task list" ? "Task list" : null}
+          {isActive === "Leave" ? "Leave" : null}
+          {isActive === "Salaryslips" ? "Salaryslips" : null}
         </div>
       </div>
 
-      <BottomMenuBar isActive={isActive} setIsActive={setIsActive} activeTab={activeTab} setSActiveTab={setActiveTab}/>
+      <BottomMenuBar isActive={isActive} setIsActive={setIsActive} activeTab={activeTab} setActiveTab={setActiveTab} setShowSearchEmployee={setShowSearchEmployee} setShowNotifications={setShowNotifications} setShowMails={setShowMails}/>
     </>
   );
 };
