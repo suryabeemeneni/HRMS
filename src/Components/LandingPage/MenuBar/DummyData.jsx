@@ -1,9 +1,9 @@
-import Holidays from "../images/featuresImages/Holidays.webp";
-import TaskTracking from "../images/featuresImages/TaskTracking.webp";
-import Salary from "../images/featuresImages/salary.webp";
-import WorkReport from "../images/featuresImages/report.webp";
-import Gallery from "../images/featuresImages/Gallery.webp";
-import LoginDetails from "../images/featuresImages/LoginDetails.webp";
+import Holidays from "../../images/featuresImages/Holidays.webp";
+import TaskTracking from "../../images/featuresImages/TaskTracking.webp";
+import Salary from "../../images/featuresImages/salary.webp";
+import WorkReport from "../../images/featuresImages/report.webp";
+import Gallery from "../../images/featuresImages/Gallery.webp";
+import LoginDetails from "../../images/featuresImages/LoginDetails.webp";
 export const Features = [
   {
     imgUrl: `${WorkReport}`,

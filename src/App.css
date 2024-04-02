@@ -20,7 +20,7 @@
   --active-color: rgb(71, 71, 71);
   --sub-heading-color: rgb(53, 53, 53);
   --sub-heading-faded-color: rgb(159, 159, 159);
-  --glass-background-color : rgba(0, 0, 0, 0.4)
+  --glass-background-color : rgba(0, 0, 0, 0.2)
 }
 
 .container-background {
@@ -74,8 +74,28 @@
     display: none;
 }
 }
+.popupContainer-center {
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  background: var(--glass-background-color);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupContainer-center-sub {
+  background: white;
+  border-radius: 13px;
+  padding: 2%;
+}
 
-
+.nothing-button {
+  border: unset;
+  /* background: unset; */
+  font: unset;
+}
 
 /* -------------------------- 768 popup containers ---------------------------------- */
 
@@ -87,6 +107,8 @@
   background: var(--glass-background-color);
   height: 100%;
 }
+
+.popupContainer768-
 .popupContainer768-sub {
   width: 85%;
   margin: auto;

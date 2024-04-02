@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MenuBar.css";
-import Hand from "../images/HelloHand.png";
-import Projects from "../images/SvgProject.png";
-import Logout from "../images/SvgLogout.png";
+import Projects from "../../images/SvgProject.png";
+import Logout from "../../images/SvgLogout.png";
 
 import {
   FaBandcamp,
@@ -13,6 +12,7 @@ import {
   FaHouseUser,
   FaSearch,
 } from "react-icons/fa";
+import NavMenuProfile from "../../Profile/NavMenuProfile";
 import { Features } from "./DummyData";
 
 const MenuBar = ({
@@ -23,8 +23,8 @@ const MenuBar = ({
   activeTab,
   setActiveTab,
 }) => {
- 
 
+  const [logoutPopUp, setLogoutPopUp] = useState(false)
   const MainContent = [
     {
       icon: <FaHouseUser />,
@@ -57,7 +57,12 @@ const MenuBar = ({
   ];
 
   const handleClick = (title) => {
-    if (title === "Search" || title === "Notifications" || title === "Mails" || title === "Holidays") {
+    if (
+      title === "Search" ||
+      title === "Notifications" ||
+      title === "Mails" ||
+      title === "Holidays"
+    ) {
       handleTabItem(title);
     } else {
       handleMenuItem(title);
@@ -82,20 +87,7 @@ const MenuBar = ({
     <>
       <div className="menubar-content">
         <div className="menubar-profile">
-          <img
-            className="menubar-profile-img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS90HxBHJqRkvtgM9Z7RyR3bLV2mlG01SzkgB51gGui1Hewzt6sjpD3FrceNug5R-8nGPA&usqp=CAU"
-            alt="profile"
-            title="profile"
-            style={{ border: "2.5px solid green" }}
-          />
-          <span className="menubar-profile-cont">
-            <p>
-              Good Day
-              <img src={Hand} width={13} height={13} alt="Hello-icon" />
-            </p>
-            <h5 title="profile">Surya Beemeneni</h5>
-          </span>
+          <NavMenuProfile/>
         </div>
 
         <button className="button menubar-checkIn">Checkin</button>
@@ -111,7 +103,8 @@ const MenuBar = ({
             activeTab === "Holidays"
               ? setSideBar(true)
               : setSideBar(false)
-          }`}>
+          }`}
+        >
           {MainContent.map((data, index) => (
             <div
               key={index}
@@ -145,22 +138,23 @@ const MenuBar = ({
 
         <h6 className="menubar-company-heading">Services : </h6>
         <div
-         className={`menubar-company container-background scroll-bar ${
-          activeTab === "Search" ||
-          activeTab === "Notifications" ||
-          activeTab === "Mails" ||
-          activeTab === "Holidays"
-            ? setSideBar(true)
-            : setSideBar(false)
-        }`}>
+          className={`menubar-company container-background scroll-bar ${
+            activeTab === "Search" ||
+            activeTab === "Notifications" ||
+            activeTab === "Mails" ||
+            activeTab === "Holidays" ||
+            activeTab === "Projects"
+              ? setSideBar(true)
+              : setSideBar(false)
+          }`}
+        >
           {Features.map((data, index) => (
             <div
               key={index}
               className={`menubar-company-content content-hover ${
                 isActive === data.title ? "content-active" : ""
               } ${
-                (data.title === "Holidays") &&
-                activeTab === data.title
+                data.title === "Holidays" && activeTab === data.title
                   ? "content-active"
                   : ""
               }`}
@@ -179,16 +173,44 @@ const MenuBar = ({
 
         {/* ---------- projects & Logout ---------- */}
         <div className="menubar-services">
-          <div className="menubar-services-content content-hover" onClick={() => setIsActive('Projects')}>
-        <img src={Projects} title="Projects" className="menubar-services-content-img" alt="Projects"/>
-        <h5 className="menubar-heading">Projects</h5>
-        </div>
-          <div className="menubar-services-content content-hover">
-            <img src={Logout} title="Logout" className="menubar-services-content-img" alt="Logout" />
+          <div
+            className={`menubar-services-content content-hover ${ activeTab === 'Projects'
+                ? "content-active"
+                : ""
+            }`}
+            onClick={() => handleTabItem("Projects")}
+          >
+            <img
+              src={Projects}
+              title="Projects"
+              className="menubar-services-content-img"
+              alt="Projects"
+            />
+            <h5 className="menubar-heading">Projects</h5>
+          </div>
+          <div
+            className="menubar-services-content content-hover"
+            onClick={() => {setLogoutPopUp(!logoutPopUp); setActiveTab('')}}>
+            <img
+              src={Logout}
+              title="Logout"
+              className="menubar-services-content-img"
+              alt="Logout"
+            />
             <h5 className="menubar-heading">Logout</h5>
           </div>
         </div>
       </div>
+
+{logoutPopUp ? 
+      <div className="popupContainer-center" onClick={() => setLogoutPopUp(!logoutPopUp)}>
+        <div className='popupContainer-center-sub logout-popup box-shadow' onClick={(e) => e.stopPropagation()}>
+          <h4 onClick={() => {localStorage.removeItem("loggedInUser")}} className="content-hover" title="Log out">Log out</h4>
+          <h4 onClick={() => {localStorage.removeItem("loggedInUser")}} className="content-hover" title="Log out of all accounts">Log out of all accounts</h4>
+          <h4 className="content-hover" onClick={() => setLogoutPopUp(!logoutPopUp)} title="Cancel">Cancel</h4>
+        </div>
+      </div>
+      :null}
     </>
   );
 };

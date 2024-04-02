@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Hand from "../images/HelloHand.png";
 import {
   FaBell,
   FaEnvelopeOpenText,
   FaFacebookMessenger,
   FaSearch,
 } from "react-icons/fa";
-import SearchEmployee from "../SearchEmployee/SearchEmployee";
-import Notifications from "../Notifications/Notifications";
-import BottomMenuBar from "./BottomMenuBar";
+import SearchEmployee from "../../SearchEmployee/SearchEmployee";
+import { useNavigate } from "react-router-dom";
+import NavMenuProfile from "../../Profile/NavMenuProfile";
 
 const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchEmployee, showNotifications, showMails, setShowSearchEmployee, setShowNotifications ,setShowMails}) => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -31,24 +30,13 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
     };
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="menubar-top-768 box-shadow">
         <div className="menubar-profile menubar-top-768-profile">
-          <img
-            className="menubar-profile-img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS90HxBHJqRkvtgM9Z7RyR3bLV2mlG01SzkgB51gGui1Hewzt6sjpD3FrceNug5R-8nGPA&usqp=CAU"
-            alt="profile"
-            title="profile"
-            style={{ border: "2.5px solid green" }}
-          />
-          <span className="menubar-profile-cont">
-            <p>
-              Good Day
-              <img src={Hand} width={13} height={13} alt="Hello-icon" />
-            </p>
-            <h5 title="profile">Surya Beemeneni</h5>
-          </span>
+          <NavMenuProfile/>
         </div>
         <div className="menubar-top-768-row">
           <div
@@ -64,10 +52,7 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
           <div
             className={`menubar-menu content-hover`}
             title="Notifications"
-            onClick={() => {
-              setActiveTab("Notifications");
-              setShowNotifications(!showNotifications);
-            }}
+            onClick={() => {navigate('/notifications/')}}
           >
             <FaBell className="menubar-icons" />
             <div
@@ -95,6 +80,7 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
             className={`menubar-menu content-hover`}
             title="Chats"
             onClick={() => setIsActive("Chat")}
+            // onClick={() => {navigate('/notifications/')}}
           >
             <FaFacebookMessenger className="menubar-icons" />
             <div
@@ -107,8 +93,6 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
 
       {(showSearchEmployee ||
         activeTab === "Search" ||
-        showNotifications ||
-        activeTab === "Notifications" ||
         showMails ||
         activeTab === "Mails") && (
         <div
@@ -128,9 +112,6 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
               {(showSearchEmployee || activeTab === "Search") ? (
                 <SearchEmployee />
               ) : null}
-              {(showNotifications || activeTab === "Notifications") && (
-                <Notifications />
-              )}
               {(showMails || activeTab === "Mails") && "Mails"}
             </div>
           </div>

@@ -1,0 +1,93 @@
+.holiday-nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    color: var(--sub-heading-faded-color);
+  }
+  
+  .holiday-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 70%;
+      color: var(--initial-color);
+  }
+  
+  .holiday-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .holiday-day-label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 70%;
+    color: var(--initial-color);
+  }
+  
+  .holiday-day {
+    text-align: center;
+    padding: 2px;
+    border-radius: 50% !important;
+    font-size: 85%;
+    cursor: default;
+  }
+  
+  .holiday-holiday {
+      color: red;
+    }
+    
+    .holiday-saturday,
+    .holiday-sunday {
+    color: var(--initial-color);
+}
+
+
+
+
+/* ---------------------- holidays - popup - description ---------------------- */
+.holiday-pop-Home-Card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5%;
+  }
+  .holiday-pop-date-info {
+    text-align: center;
+    line-height: 14px;
+    padding: 5px;
+    background: var(--glass-background-color);
+  }
+  
+  .holiday-pop-date-info h3 {
+    color: darkred;
+    font-size: 110%;
+  }
+  .holiday-pop-date-info p {
+    font-size: 70%;
+  }
+  
+  .holiday-pop-details b {
+    text-transform: uppercase;
+    color: lightcoral;
+  }
+  
+  .holiday-pop-details-p {
+    font-size: 70%;
+    padding: 2%;
+  }
+  
+  .holiday-pop-view-calendar {
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+  }
+
+
+  .edit-delete {
+    display: flex;
+    justify-content: space-evenly;
+  }

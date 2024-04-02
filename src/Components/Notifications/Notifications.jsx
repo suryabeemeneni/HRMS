@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react"
 // import React, { useEffect, useState } from "react";
 import "./Notification.css";
-import { NotificationData } from "../MenuBar/DummyData";
-import { loadingUrl } from "../../App";
+// import { loadingUrl } from "../../App";
+import { NotificationData } from "../LandingPage/MenuBar/DummyData";
 
 const Notifications = () => {
   // const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -29,14 +29,16 @@ const Notifications = () => {
 
   //   fetchData();
   // }, []);
+
+
   return (
     <>
-        {loading === true ? (
+        {/* {loading === true ? (
           <>
           <h5>Notifications Loading...</h5>
           <img src={loadingUrl} width={"100%"} alt="Loading..." />
           </>
-        ): <>
+        ): <> */}
       {NotificationData.map((data, index) => (
       // {data.map((data, index) => (
         <div key={index} className="notification-card content-hover">
@@ -57,7 +59,8 @@ const Notifications = () => {
           <p className="notification-para">{data.para}</p>
         </div>
         
-      ))}</>}
+      ))}
+      {/* </>} */}
     </>
   );
 };

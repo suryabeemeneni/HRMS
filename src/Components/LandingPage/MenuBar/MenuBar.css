@@ -169,9 +169,9 @@
   top: 0;
 }
 .sub-menubar {
-  width: 230px;
+  width: 250px;
   height: 100%;
-  padding: 10px 10px 0 10px;
+  padding: 0px 10px;
   border-left-style: dotted;
   border-left-color: rgb(219, 219, 219);
   border-left-width: 0.1px;
@@ -189,7 +189,25 @@
 .menubar-bottom-768 {
   display: none;
 }
-
+.logout-popup {
+  min-width: 400px;
+  max-width: 630px;
+  max-height: 500px;
+  color: rgb(199, 0, 0);
+  text-align: center;
+  & h4 {
+    margin: 4px 0;
+    padding: 10px 0 5px 0;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(219, 219, 219);
+    border-bottom-width: 1px;
+    cursor: pointer;
+    &:last-child {
+      color: var(--active-color);
+      border-bottom: unset;
+    }
+  }
+}
 /* --------------------------- media query to hide side bar ---------------------------------- */
 @media (max-width: 768px) {
   .menubar {

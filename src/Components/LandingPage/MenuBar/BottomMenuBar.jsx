@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaHouseUser, FaDeskpro, FaBandcamp} from "react-icons/fa";
-import Services from "../images/SvgServices.png";
-import Projects from "../images/SvgProject.png";
+import Services from "../../images/SvgServices.png";
+import Projects from "../../images/SvgProject.png";
 
 const BottomMenuBar = ({isActive, setIsActive, setActiveTab, setShowSearchEmployee, setShowNotifications ,setShowMails}) => {
 

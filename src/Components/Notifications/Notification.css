@@ -1,3 +1,22 @@
+.notification-heading {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 5px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(219, 219, 219);
+  border-bottom-width: 1px;
+  position: sticky;
+  top: 0;
+  background: white;
+  & h5 {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+.notificaton-FaArrowLeft {
+  padding: 4px;
+}
 .notification-card {
   width: 100%;
   margin-top: 5px;
@@ -34,4 +53,10 @@
 
 .notification-time {
   font-size: 65%;
+}
+
+@media (max-width : 768px) {
+  .notification-card {
+    margin-top: 5px;
+  }
 }
