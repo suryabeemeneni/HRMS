@@ -13,7 +13,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import NavMenuProfile from "../../Profile/NavMenuProfile";
-import { Features } from "./DummyData";
+import { services } from "./DummyData";
 
 const MenuBar = ({
   isActive,
@@ -61,7 +61,8 @@ const MenuBar = ({
       title === "Search" ||
       title === "Notifications" ||
       title === "Mails" ||
-      title === "Holidays"
+      title === "Holidays" ||
+      title === "Projects"
     ) {
       handleTabItem(title);
     } else {
@@ -148,7 +149,7 @@ const MenuBar = ({
               : setSideBar(false)
           }`}
         >
-          {Features.map((data, index) => (
+          {services.map((data, index) => (
             <div
               key={index}
               className={`menubar-company-content content-hover ${
@@ -174,10 +175,9 @@ const MenuBar = ({
         {/* ---------- projects & Logout ---------- */}
         <div className="menubar-services">
           <div
-            className={`menubar-services-content content-hover ${ activeTab === 'Projects'
-                ? "content-active"
-                : ""
-            }`}
+            className={`menubar-services-content content-hover ${
+              isActive.startsWith('Projects/') ? "content-active" : ""
+            } ${activeTab === "Projects" && 'content-active'}`}
             onClick={() => handleTabItem("Projects")}
           >
             <img

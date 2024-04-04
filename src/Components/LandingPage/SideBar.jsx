@@ -60,7 +60,12 @@ const SideBar = ({
                    <div className="notification-heading">
                      <h5>Projects</h5>
                    </div>
-                    <Projects/> 
+                   <Projects 
+          isActive={isActive}
+          setIsActive={setIsActive}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          />
                     </>
                    ) : null}
                   {activeTab === "Mails" ? (

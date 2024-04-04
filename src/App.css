@@ -1,7 +1,12 @@
 * {
   margin: 0;
 }
+body {height: 100%;}
+#root {
+  height: 100%;
+}
 :root {
+  height: 100%;
   --boxShadow-thin: inset 0 0 0 max(1px, 0.0625rem);
   --boxShadow-thick: inset 0 0 0 max(2px, 0.125rem);
   --borderColor-default: #d0d7de;
@@ -126,6 +131,14 @@
   overflow: scroll;
 }
 
+.bottom-popup {
+  display: none;
+  width: 100%;
+  height: 95%;
+  position: absolute;
+  top: 0;
+}
+
 @media (max-width : 768px) {
   .popupContainer768-container {
       width: 90%;
@@ -133,7 +146,7 @@
       border-radius: 13px;
       max-height: 100%;
   }
-  .popupContainer768 {
+  .popupContainer768,.bottom-popup {
       display: unset;
   }
 }

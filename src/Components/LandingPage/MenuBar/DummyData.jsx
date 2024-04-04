@@ -4,7 +4,7 @@ import Salary from "../../images/featuresImages/salary.webp";
 import WorkReport from "../../images/featuresImages/report.webp";
 import Gallery from "../../images/featuresImages/Gallery.webp";
 import LoginDetails from "../../images/featuresImages/LoginDetails.webp";
-export const Features = [
+export const services = [
   {
     imgUrl: `${WorkReport}`,
     title: "Your details - logs",

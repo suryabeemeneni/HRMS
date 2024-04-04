@@ -4,6 +4,7 @@ import Navbar768 from "../LandingPage/MenuBar/Navbar768";
 import BottomMenuBar from "./MenuBar/BottomMenuBar";
 import SideBar from "./SideBar";
 import MainBar from "./MainBar";
+import Projects from "../Projects/Projects";
 
 const LandingPage = () => {
   const [sideBar, setSideBar] = useState(false);
@@ -22,20 +23,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <Navbar768
-        isActive={isActive}
-        setIsActive={setIsActive}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        setShowSearchEmployee={setShowSearchEmployee}
-        setShowNotifications={setShowNotifications}
-        setShowMails={setShowMails}
-        showSearchEmployee={showSearchEmployee}
-        showNotifications={showNotifications}
-        showMails={showMails}
-      />
-
-      <div style={{ display: "flex", height: " 100dvh", overflow: "hidden" }}>
+      <div style={{ display: "flex", height: "100%", overflow: "hidden" }}>
         <div style={{ flex: "0 0 auto" }}>
           <div
             className={`menubar box-shadow ${
@@ -65,17 +53,27 @@ const LandingPage = () => {
           className="active-content scroll-bar"
           style={{ flex: "1", overflowY: "scroll" }}
         >
-          <MainBar 
-                        isActive={isActive}
-                        setIsActive={setIsActive}
-                        sideBar={sideBar}
-                        setSideBar={setSideBar}
-                        activeTab={activeTab}
-                        setActiveTab={setActiveTab}
+          <Navbar768
+            isActive={isActive}
+            setIsActive={setIsActive}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            setShowSearchEmployee={setShowSearchEmployee}
+            setShowNotifications={setShowNotifications}
+            setShowMails={setShowMails}
+            showSearchEmployee={showSearchEmployee}
+            showNotifications={showNotifications}
+            showMails={showMails}
+          />
+          <MainBar
+            isActive={isActive}
+            setIsActive={setIsActive}
+            sideBar={sideBar}
+            setSideBar={setSideBar}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
           />
         </div>
-      </div>
-
       <BottomMenuBar
         isActive={isActive}
         setIsActive={setIsActive}
@@ -84,9 +82,21 @@ const LandingPage = () => {
         setShowSearchEmployee={setShowSearchEmployee}
         setShowNotifications={setShowNotifications}
         setShowMails={setShowMails}
-        />
+      />
+      </div>
+
+
+      <RenderFiles isActive={isActive} setIsActive={setIsActive} />
     </>
-  )
+  );
+};
+
+const RenderFiles = ({ isActive, setIsActive }) => {
+  return (
+    <div style={{ display: "none" }}>
+      <Projects isActive={isActive} setIsActive={setIsActive} />
+    </div>
+  );
 };
 
 export default LandingPage;
