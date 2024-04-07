@@ -5,6 +5,7 @@ import projects from "../../images/SvgProject.png";
 import Projects from '../../Projects/Projects';
 import { services } from './DummyData';
 import { useNavigate } from 'react-router-dom';
+import CheckIn from '../../Profile/CheckIn';
 
 const BottomMenuBar = ({isActive, setIsActive, activeTab, setActiveTab, setShowSearchEmployee, setShowNotifications ,setShowMails}) => {
 
@@ -63,7 +64,7 @@ const BottomMenuBar = ({isActive, setIsActive, activeTab, setActiveTab, setShowS
             >
               <FaBandcamp className="menubar-icons" />
             </div>
-          <button className="button">Checkin</button>
+            <CheckIn setIsActive={setIsActive} setActiveTab={setActiveTab} />
           <div
                 className={`menubar-company-content content-hover ${
                   isActive.startsWith('Projects/') ? "content-active" : ""
@@ -91,7 +92,7 @@ const BottomMenuBar = ({isActive, setIsActive, activeTab, setActiveTab, setShowS
 
         {(activeTab === 'Projects' || activeTab === 'Services' )? 
         <div className='bottom-popup' onClick={() => {setActiveTab('')}} >
-          <div className='bottom-popup-services scroll-bar box-shadow' onClick={(e) => e.stopPropagation()}>
+          <div className='bottom-popup-container scroll-bar box-shadow' onClick={(e) => e.stopPropagation()}>
             {activeTab === 'Projects' &&
             <Projects 
             isActive={isActive}

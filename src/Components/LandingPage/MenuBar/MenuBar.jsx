@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MenuBar.css";
 import Projects from "../../images/SvgProject.png";
-import Logout from "../../images/SvgLogout.png";
+import LogoutImage from "../../images/SvgLogout.png";
 
 import {
   FaBandcamp,
@@ -14,6 +14,8 @@ import {
 } from "react-icons/fa";
 import NavMenuProfile from "../../Profile/NavMenuProfile";
 import { services } from "./DummyData";
+import CheckIn from "../../Profile/CheckIn";
+import Logout from "../../Profile/Logout";
 
 const MenuBar = ({
   isActive,
@@ -88,10 +90,12 @@ const MenuBar = ({
     <>
       <div className="menubar-content">
         <div className="menubar-profile">
-          <NavMenuProfile/>
+          <NavMenuProfile setIsActive={setIsActive} setActiveTab={setActiveTab}/>
         </div>
 
-        <button className="button menubar-checkIn">Checkin</button>
+        <div className="menubar-checkIn">
+        <CheckIn setIsActive={setIsActive} setActiveTab={setActiveTab}/>
+        </div>
 
         <hr />
 
@@ -128,7 +132,7 @@ const MenuBar = ({
               data.title === "Mails" ? (
                 <div className="menubar-icons-notification-dot"></div>
               ) : null}
-              <h5 className="menubar-heading">{data.title}</h5>
+              <h5 className="menubar-heading"><button className="nothing-button">{data.title}</button></h5>
             </div>
           ))}
         </div>
@@ -167,7 +171,7 @@ const MenuBar = ({
                 src={data.imgUrl}
                 alt={data.title}
               />
-              <h5>{data.title}</h5>
+              <h5><button className="nothing-button">{data.title}</button></h5>
             </div>
           ))}
         </div>
@@ -186,18 +190,18 @@ const MenuBar = ({
               className="menubar-services-content-img"
               alt="Projects"
             />
-            <h5 className="menubar-heading">Projects</h5>
+            <h5 className="menubar-heading"><button className="nothing-button">Projects</button></h5>
           </div>
           <div
             className="menubar-services-content content-hover"
             onClick={() => {setLogoutPopUp(!logoutPopUp); setActiveTab('')}}>
             <img
-              src={Logout}
+              src={LogoutImage}
               title="Logout"
               className="menubar-services-content-img"
               alt="Logout"
             />
-            <h5 className="menubar-heading">Logout</h5>
+            <h5 className="menubar-heading"><button className="nothing-button">Logout</button></h5>
           </div>
         </div>
       </div>
@@ -205,9 +209,7 @@ const MenuBar = ({
 {logoutPopUp ? 
       <div className="popupContainer-center" onClick={() => setLogoutPopUp(!logoutPopUp)}>
         <div className='popupContainer-center-sub logout-popup box-shadow' onClick={(e) => e.stopPropagation()}>
-          <h4 onClick={() => {localStorage.removeItem("loggedInUser")}} className="content-hover" title="Log out">Log out</h4>
-          <h4 onClick={() => {localStorage.removeItem("loggedInUser")}} className="content-hover" title="Log out of all accounts">Log out of all accounts</h4>
-          <h4 className="content-hover" onClick={() => setLogoutPopUp(!logoutPopUp)} title="Cancel">Cancel</h4>
+          <Logout setLogoutPopUp={setLogoutPopUp}/>
         </div>
       </div>
       :null}

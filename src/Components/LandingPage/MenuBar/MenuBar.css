@@ -1,4 +1,5 @@
 .menubar {
+  max-width: 230px;
   height: 100%;
   padding: 8px 12px 20px;
   box-sizing: border-box;
@@ -40,8 +41,17 @@
     cursor: pointer;
   }
 }
+.location-color {
+  & p {
+    color: var(--error-color);
+  }
+}
 .menubar-checkIn {
+  width: 100%;
   margin-bottom: 7px;
+  & button {
+    width: 100%;
+  }
 }
 
 .menubar-menu-div {
@@ -117,7 +127,9 @@
 }
 
 .MainBar-Pad-Mar {
-  padding: 0.7%;
+  height: 100%;
+  padding: 0 0.7%;
+  overflow-y: scroll;
 }
 
 /* --------------------------- side bar close css ---------------------------------- */
@@ -168,7 +180,7 @@
   width: -webkit-fill-available;
   height: 100%;
   position: absolute;
-  left: 95px;
+  left: 90px;
   top: 0;
 }
 .sub-menubar {
@@ -211,24 +223,11 @@
     }
   }
 }
-/* --------------------------- media query to hide side bar ---------------------------------- */
-@media (max-width: 768px) {
-  .menubar {
-    display: none;
-  }
-  .menubar-top-768,
-  .menubar-bottom-768 {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 45px;
-  }
-  .MainBar-Pad-Mar {
-    margin-bottom: 48px;
-    padding: 0.5%;
-  }
-}
+
+
+
+
+
 .menubar-top-768 {
   width: 95%;
   padding: 0 2.5%;
@@ -254,4 +253,98 @@
   position: fixed;
   bottom: 0;
   background-color: white;
+}
+
+
+.lunchPop {
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  left: 200px;
+  top: 0;
+  background: var(--glass-background-color);
+}
+
+.lunchpop-container {
+  position: relative;
+  min-width: 0px;
+  min-height: 0px;
+  max-width: 200px;
+  max-height: 200px;
+  padding: 3px;
+  text-align: center;
+  top: 15%;
+  background: linear-gradient(to top, white , rgb(194, 224, 236) ) !important;
+  & input{
+    width: 45%;
+    margin: 3px 2px;
+  }
+  & p {
+    color: var(--error-color);
+    font-size: 75%;
+    text-align: center;
+  }
+  & button {
+    margin: 3px 0;
+  }
+}
+
+
+/* --------------------------- media query to hide side bar ---------------------------------- */
+@media (max-width: 768px) {
+  .menubar {
+    display: none;
+  }
+  .menubar-top-768,
+  .menubar-bottom-768 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 100%;
+    height: 45px;
+  }
+  .menubar-bottom-768 {
+    width: 100%;
+  }
+  .MainBar-Pad-Mar {
+    margin-bottom: 48px;
+    padding: 0.5%;
+  }
+  .lunchPop {
+    left: unset;
+  }
+  .lunchpop-container {
+    top: unset;
+    bottom: 0;
+    min-width: 98%;
+    max-width: 99%;
+    min-height: 16%;
+    position: absolute;
+    border-radius: 30px 30px 0 0;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & div {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    & label {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+    }
+    & input {
+      width: 100%;
+    }
+    & p {
+      width: 95%;
+      margin: 5px auto;
+      text-align: end;
+    }
+    & button {
+      width: 100%;
+    }
+  }
 }

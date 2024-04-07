@@ -36,7 +36,7 @@ const Navbar768 = ({ isActive, setIsActive, activeTab, setActiveTab, showSearchE
     <>
       <div className="menubar-top-768 box-shadow">
         <div className="menubar-profile menubar-top-768-profile">
-          <NavMenuProfile/>
+          <NavMenuProfile setIsActive={setIsActive} setActiveTab={setActiveTab}/>
         </div>
         <div className="menubar-top-768-row">
           <div

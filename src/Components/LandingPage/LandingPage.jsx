@@ -23,7 +23,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div style={{ display: "flex", height: "100%", overflow: "hidden" }}>
+      <div style={{ display: "flex", height: window.innerHeight, overflow: "hidden" }}>
         <div style={{ flex: "0 0 auto" }}>
           <div
             className={`menubar box-shadow ${
@@ -50,8 +50,8 @@ const LandingPage = () => {
           </div>
         </div>
         <div
-          className="active-content scroll-bar"
-          style={{ flex: "1", overflowY: "scroll" }}
+          className="active-content scroll-bar mainBar-container"
+          style={{ flex: "1", height:window.innerHeight}}
         >
           <Navbar768
             isActive={isActive}

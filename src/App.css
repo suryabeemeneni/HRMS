@@ -1,12 +1,7 @@
 * {
   margin: 0;
 }
-body {height: 100%;}
-#root {
-  height: 100%;
-}
 :root {
-  height: 100%;
   --boxShadow-thin: inset 0 0 0 max(1px, 0.0625rem);
   --boxShadow-thick: inset 0 0 0 max(2px, 0.125rem);
   --borderColor-default: #d0d7de;
@@ -25,7 +20,10 @@ body {height: 100%;}
   --active-color: rgb(71, 71, 71);
   --sub-heading-color: rgb(53, 53, 53);
   --sub-heading-faded-color: rgb(159, 159, 159);
-  --glass-background-color : rgba(0, 0, 0, 0.2)
+  --glass-background-color : rgba(0, 0, 0, 0.2);
+  --error-color : rgb(216, 65, 65);
+  --sucess-color :rgb(100, 216, 65);
+  --pop-font-weight : 600;
 }
 
 .container-background {
@@ -33,7 +31,6 @@ body {height: 100%;}
   box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium));
   border-radius: var(--borderRadius-medium, 6px);
   border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
-
 }
 
 .border {
@@ -82,7 +79,7 @@ body {height: 100%;}
 .popupContainer-center {
   width: 100%;
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   background: var(--glass-background-color);
   height: 100%;
@@ -97,10 +94,49 @@ body {height: 100%;}
 }
 
 .nothing-button {
+  background: unset;
   border: unset;
-  /* background: unset; */
+  width: unset;
+  height: unset;
   font: unset;
+  color: unset;
 }
+
+
+.bottom-popup-container {
+  width: 97%;
+  margin: auto 0.7%;
+  padding: 5px;
+  display: flex;
+  overflow: scroll;
+  position: fixed;
+  bottom: 47.5px;
+  left: 0;
+  justify-content: space-evenly;
+  border-radius: var(--borderRadius-medium, 6px);
+  background: var(--color);
+}
+
+.side-pop-message {
+  max-width: 50%;
+  font-size: 75%;
+  font-weight: var(--pop-font-weight);
+  position: fixed;
+  top: 10%;
+  right: 0;
+  background: var(--glass-background-color);
+  padding: 15px 15px 15px 20px;
+  border-radius: 25px 0 0 25px;
+}
+
+.error-message {
+  color: var(--error-color);
+}
+
+.sucess-message {
+  color: var(--sucess-color);
+}
+
 
 /* -------------------------- 768 popup containers ---------------------------------- */
 
@@ -140,6 +176,9 @@ body {height: 100%;}
 }
 
 @media (max-width : 768px) {
+  .mainBar-container {
+    margin-left: -2px;
+  }
   .popupContainer768-container {
       width: 90%;
       padding: 4.5%;
@@ -148,6 +187,12 @@ body {height: 100%;}
   }
   .popupContainer768,.bottom-popup {
       display: unset;
+  }
+  .side-pop-message {
+    font-size: 75%;
+  }
+  .popupContainer-center {
+    display: none;
   }
 }
 
@@ -159,5 +204,8 @@ body {height: 100%;}
   }
   .popupContainer768-sub {
       width: 100%;
+  }
+  .side-pop-message {
+    font-size: 65%;
   }
 }
