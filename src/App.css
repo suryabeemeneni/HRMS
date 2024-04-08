@@ -24,10 +24,24 @@
   --error-color : rgb(216, 65, 65);
   --sucess-color :rgb(100, 216, 65);
   --pop-font-weight : 600;
+  --cancel-color : rgb(230, 96, 96);
+  --cancel-hover-color : rgb(214, 57, 57);
 }
 
 .container-background {
   background: var(--light-grad-pink-blue, radial-gradient(ellipse at 40% 0%, #bf398910 0, transparent 75%), radial-gradient(ellipse at 60% 0%, #096bde10 0, transparent 75%));
+  box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium));
+  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
+}
+
+.container-boxShadow {
+  box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium));
+  border-radius: var(--borderRadius-medium, 6px);
+  border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
+}
+
+.container-border{
   box-shadow: var(--shadow-resting-medium, var(--color-shadow-medium));
   border-radius: var(--borderRadius-medium, 6px);
   border: var(--borderWidth-thin, 1px) solid var(--borderColor-default, var(--color-border-default));
@@ -50,6 +64,21 @@
   &:hover {
     transition: 0.5s;
     background: var(--button-hover-color);
+  }
+}
+
+.cancel-button {
+  background-color: var(--cancel-color);
+  padding: 7px 13px;
+  border-radius: 5px;
+  border: none;
+  color: var(--color);
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  &:hover {
+    transition: 0.5s;
+    background: var(--cancel-hover-color);
   }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import ProjectDetails from "../Projects/ProjectDetails";
 import Home from "../Home/Home";
 import Profile from "../Profile/Profile";
-import Leave from "../Leaves/Leave";
+import Leave from "../Services/Leaves/Leave";
 
 const MainBar = ({
   isActive,

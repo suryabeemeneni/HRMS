@@ -3,10 +3,22 @@ import "./Profile.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const EditProfile = (props) => {
+const EditProfile = () => {
   const { name } = useParams();
 
-  const [loading, setLoading] = useState(false);
+
+  const [editSucess, setEditSucess] = useState(false)
+  const [editError, setEditError] = useState(false)
+
+  // ---------------- auto hide error popup after 5 seconds ----------------- //
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowErrorMessage(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [showErrorMessage]);
+
   const [hasChanges, setHasChanges] = useState(false);
 
   const [userData, setUserData] = useState({
@@ -36,7 +48,6 @@ const EditProfile = (props) => {
   useEffect(() => {
     const fetchUserDataFromAPI = async () => {
       try {
-        setLoading(true);
         const response = await axios.get(
           `https://empadmin.hola9.com/account/loginprofile/?name=${name}`
         );
@@ -45,8 +56,6 @@ const EditProfile = (props) => {
         setHasChanges(false); // Reset changes state
       } catch (error) {
         console.error("Error fetching user data:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -69,9 +78,8 @@ const EditProfile = (props) => {
     setHasChanges(true);
   };
 
-  const handleFormSubmit = async () => {
-    setLoading(true);
-
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
 
     Object.keys(userData).forEach((key) => {
@@ -92,20 +100,22 @@ const EditProfile = (props) => {
 
       if (response.status === 200) {
         console.log("Profile updated successfully!", response.data);
-        window.alert("Profile updated successfully.");
+        setShowErrorMessage(true);
+        setEditSucess(true)
         setHasChanges(false); // Reset changes state after successful submission
       } else {
         console.error(
           "Failed to update profile. Server returned:",
           response.status
         );
-        window.alert("Failed to update profile.");
+        alert('error')
+        setShowErrorMessage(true);
+        setEditError(true)
       }
     } catch (error) {
       console.error("Failed to update profile.", error);
-      window.alert("Error updating profile.");
-    } finally {
-      setLoading(false);
+      setShowErrorMessage(true);
+      setEditError(true)
     }
   };
 
@@ -119,10 +129,11 @@ const EditProfile = (props) => {
     <>
       <center className="edit-profile-container-img ">
         {/* {userData.image &&  */}
-        <img 
-        // src={userData.image} 
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUj1ciE6wDturbVa82fUvijTvwHFWrG7SPw&s"
-        alt="User Image" />
+        <img
+          // src={userData.image}
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUj1ciE6wDturbVa82fUvijTvwHFWrG7SPw&s"
+          alt="User Image"
+        />
         {/* } */}
       </center>
       <div className="edit-profile-container scroll-bar">
@@ -351,8 +362,26 @@ const EditProfile = (props) => {
         </label>
       </div>
       <div className="edit-profile-submit">
-        <button className="button">Edit Profile</button>
+        <button className="button" onClick={handleFormSubmit} style={{cursor: hasChanges ? "pointer" : "not-allowed"}} title={hasChanges ? "Save changes" : "No changes to save"}
+            disabled={!hasChanges}>
+          Edit Profile
+        </button>
       </div>
+
+
+
+      {showErrorMessage && (
+        <i
+          className={`side-pop-message ${
+            editSucess
+              ? "sucess-message"
+              : "error-message"
+          }`}
+        >
+          {editError ? 'Failed to update profile.' : null}
+          {editSucess ? 'Profile updated successfully.' : null}
+          </i>
+)}
     </>
   );
 };

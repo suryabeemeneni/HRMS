@@ -37,6 +37,7 @@ const Profile = () => {
             <img 
             // src={user.image} alt={user.name}
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUj1ciE6wDturbVa82fUvijTvwHFWrG7SPw&s"
+            alt="profile"
              />
             <div className="profile-card-details">
               <span>

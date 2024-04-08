@@ -5,14 +5,31 @@ import BackArrow from "./Components/LandingPage/MenuBar/BackArrow";
 import Holidays from "./Components/Services/Holidays/Holidays";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import EditProfile from "./Components/Profile/EditProfile";
+// import Preloader from "./Preloader";
+// import { useEffect, useState } from "react";
 
 export const loadingUrl =
   "https://cdn.dribbble.com/users/115601/screenshots/5356365/loading.gif";
+  
 
 function App() {
+
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3500);
+
+  //   return () => clearTimeout(timeout);
+  // }, []);
+
+
   return (
     <>
+     
       <BrowserRouter>
+        {/* {loading ? <Preloader /> : */}
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
           <Route
@@ -50,6 +67,7 @@ function App() {
             </>
             } />
         </Routes>
+{/* } */}
       </BrowserRouter>
     </>
   );
